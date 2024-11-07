@@ -70,6 +70,8 @@ type Config struct {
 	EOTSManagerAddress       string        `long:"eotsmanageraddress" description:"The address of the remote EOTS manager; Empty if the EOTS manager is running locally"`
 	MaxNumFinalityProviders  uint32        `long:"maxnumfinalityproviders" description:"The maximum number of finality-provider instances running concurrently within the daemon"`
 	SyncFpStatusInterval     time.Duration `long:"syncfpstatusinterval" description:"The duration of time that it should sync FP status with the client blockchain"`
+	APIPort                  string        `long:"api-port" description:"The port on which the API is listening on"`
+	DBFilePath               string        `long:"db-file-path" description:"path to the DB file"`
 
 	BitcoinNetwork string `long:"bitcoinnetwork" description:"Bitcoin network to run on" choise:"mainnet" choice:"regtest" choice:"testnet" choice:"simnet" choice:"signet"`
 
@@ -84,6 +86,10 @@ type Config struct {
 	OPStackL2Config *OPStackL2Config `group:"opstackl2" namespace:"opstackl2"`
 
 	CosmwasmConfig *CosmwasmConfig `group:"wasm" namespace:"wasm"`
+
+	ConsumerGenericConfig *ConsumerGenericConfig `group:"genericconsumer" namespace:"genericconsumer"`
+
+	FGConfig *FGConfig `group:"fg" namespace:"fg"`
 
 	RpcListener string `long:"rpclistener" description:"the listener for RPC connections, e.g., 127.0.0.1:1234"`
 
